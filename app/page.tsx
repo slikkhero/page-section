@@ -15,8 +15,8 @@ export default function Home() {
     });
   }, [])
   return (
-    <div>
-      {message}
+    <div className="bg-red-500">
+      <p className="text-white">{message}</p>
     </div>
   );
 }
