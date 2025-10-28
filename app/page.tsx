@@ -11,7 +11,7 @@ export default function Home() {
       //   return;
       // }
       setMessage(event.data.toString());
-      console.log('Received message:', event.data);
+      console.log('Received message: ', event.data);
     });
   }, [])
   return (
