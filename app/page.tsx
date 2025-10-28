@@ -15,8 +15,8 @@ export default function Home() {
     });
   }, [])
   return (
-    <div className="bg-red-500">
-      <p className="text-white">{message}</p>
+    <div className="bg-red-500 flex flex-1 h-full">
+      <p className="text-white bg-black h-40 mt-10 flex w-full">yo:-{message}</p>
     </div>
   );
 }
