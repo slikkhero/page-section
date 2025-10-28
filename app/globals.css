@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
- 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    width: 100vw;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root, #__next {
+  height: 100%;
 }

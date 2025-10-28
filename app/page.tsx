@@ -1,22 +1,41 @@
 "use client"
+import AllComponents from "@/components/BannerComps/AllComponent";
+import useScreenSize from "@/hooks/useScreenSize";
 import { useEffect, useState } from "react";
+
 export default function Home() {
-  const [message, setMessage] = useState();
+  const [data, setData] = useState<any>();
+  const screenSize = useScreenSize();
   useEffect(() => {
-    window.addEventListener('message', function (event) {
-      // event.origin contains the origin of the sender
-      // event.data contains the message sent
-      // event.source refers to the Window object of the sender
-      // if (event.origin !== 'http://example.com') { // Verify sender's origin for security
-      //   return;
-      // }
-      setMessage(event.data.toString());
-      console.log('Received message: ', event.data);
-    });
-  }, [])
+    const handler = (event: MessageEvent) => {
+      // TODO Verify origin 
+      // if (event.origin !== "https://your-sender-domain.com") return;
+      console.log("Received message:", event.data);
+      setData(event.data);
+    };
+
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
+  useEffect(() => { loadData() }, [])
+  const loadData = async () => {
+    try {
+      const res = await fetch("/mockData.json");
+      const data = await res.json();
+      setData(data.data?.data);
+    } catch (error) {
+    }
+
+  }
   return (
-    <div className="bg-red-500 flex flex-1 h-full">
-      <p className="text-white bg-black h-40 mt-10 flex w-full">yo:-{message}</p>
+    <div className="text-primaryBlack w-full pb-20 bg-primaryWhite h-full min-h-screen">
+      <div className={"w-full"}>
+        <AllComponents
+          data={data}
+          size={screenSize}
+          pageName="home"
+        />
+      </div>
     </div>
   );
 }
