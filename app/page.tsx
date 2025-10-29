@@ -1,17 +1,19 @@
 "use client"
 import AllComponents from "@/components/BannerComps/AllComponent";
 import useScreenSize from "@/hooks/useScreenSize";
+import { ScreenSize } from "@/utils";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState<any>();
-  const screenSize = useScreenSize();
+  const [size, setSize] = useState<ScreenSize>('sm');
   useEffect(() => {
     const handler = (event: MessageEvent) => {
       // TODO Verify origin 
       // if (event.origin !== "https://your-sender-domain.com") return;
       console.log("Received message:", event.data);
-      setData(event.data);
+      setData(event.data?.data);
+      setSize(event.data?.size);
     };
 
     window.addEventListener("message", handler);
@@ -32,7 +34,7 @@ export default function Home() {
       <div className={"w-full"}>
         <AllComponents
           data={data}
-          size={screenSize}
+          size={size}
           pageName="home"
         />
       </div>

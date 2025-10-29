@@ -1,6 +1,5 @@
 "use client";
 
-import useScreenSize from "@/hooks/useScreenSize";
 import Hls from "hls.js";
 import { useEffect, useRef, useState } from "react";
 import { VscMute, VscUnmute } from "react-icons/vsc";
@@ -27,7 +26,6 @@ const GeneralVideoPlayer: React.FC<VideoPlayerProps> = ({
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [aspectRatioVal, setAspectRatio] = useState(1);
   const [isMuted, setIsMuted] = useState(true); // <-- Mute state
-  const size = useScreenSize();
 
   const handleMetadataLoad = (e: any) => {
     const { videoWidth, videoHeight } = e.target;

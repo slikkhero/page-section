@@ -1,6 +1,5 @@
 "use client";
 
-import useScreenSize from "@/hooks/useScreenSize";
 import Hls from "hls.js";
 import { useEffect, useRef, useState } from "react";
 import { BsPlayCircle } from "react-icons/bs";
@@ -24,7 +23,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [aspectRatioVal, setAspectRatio] = useState(1);
-  const size = useScreenSize();
 
   const handleMetadataLoad = (e) => {
     // const { videoWidth, videoHeight } = e.target;
