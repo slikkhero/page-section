@@ -26,7 +26,7 @@ export default function Home() {
     setIsTransitioning(true)
     setTimeout(() => {
       setData((prev) => {
-        const isMobile = prev.size == "sm"
+        const isMobile = prev?.size == "sm"
         return {
           ...prev,
           size: isMobile ? "lg" : "sm",

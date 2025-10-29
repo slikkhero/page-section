@@ -113,7 +113,6 @@ export const GenericComponent = ({
           }
         );
         const data = await res.json();
-        console.log('abcd x 0', data);
 
         setChildData(data?.results || []);
       } else {
