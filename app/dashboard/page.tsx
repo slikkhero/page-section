@@ -6,27 +6,30 @@ const dashboard = () => {
     const handlePostMessage = () => {
         iframeRef.current?.contentWindow?.postMessage(JSON.stringify(
             data
-        ), "https://page-section.vercel.app");
+        ), "http://localhost:3001/");
     };
+    useEffect(() => {
+        handlePostMessage()
+    }, [data])
     useEffect(() => { loadData() }, [])
     const loadData = async () => {
         try {
             const res = await fetch("/mockData.json");
             const data = await res.json();
-            setData(data.data);
+            console.log('bbbb', data?.data)
+            setData(data?.data);
         } catch (error) {
         }
-
     }
     return (
-        <div>
+        <div className='h-screen'
+        >
             <iframe
                 ref={iframeRef}
-                src="https://page-section.vercel.app/"
+                src="http://localhost:3001/"
                 width={'100%'}
                 height={'100%'}
             ></iframe>
-            <button type='button' onClick={handlePostMessage}>post</button>
         </div>
     );
 }

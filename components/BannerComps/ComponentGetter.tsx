@@ -8,6 +8,7 @@ import { PropsWithChildren, useEffect, useState } from "react";
 function ComponentGetter({
   component_type = "notFound",
   children,
+  parentWidth,
   default_components = {},
   ...rest
 }: POSITION_ITEM_FRONTEND & PropsWithChildren) {
@@ -29,7 +30,7 @@ function ComponentGetter({
   }, [router.asPath]);
 
   if (component_type == "Generic")
-    return <GenericComponent {...rest} component_type={component_type} />;
+    return <GenericComponent {...rest} component_type={component_type} parentWidth={parentWidth} />;
   if (component_type == "Coupon") {
     if (showCoupon) {
       return (

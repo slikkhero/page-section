@@ -56,6 +56,7 @@ export const GenericComponent = ({
   is_section_clickable,
   background_config,
   extra_info,
+  parentWidth,
   ...rest
 }: POSITION_ITEM_FRONTEND) => {
   const {
@@ -64,27 +65,26 @@ export const GenericComponent = ({
   }: { cta_config?: CtaConfigProps; child_component_config?: CarouselGridConfig } =
     extra_info || {};
   const sectionRef = useRef<HTMLAnchorElement>(null);
-  const [parentWidth, setParentWidth] = useState(0);
   const [childData, setChildData] = useState<any[]>([]);
   const llInfoData = {}
   const [selectedCategory, setSelectedCategory] = useState<{
     name?: string;
     id?: string;
   }>();
-  useEffect(() => {
-    if (!sectionRef.current) return;
+  // useEffect(() => {
+  //   if (!sectionRef.current) return;
 
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width;
-        if (width > 0) setParentWidth(width);
-      }
-    });
+  //   const observer = new ResizeObserver((entries) => {
+  //     for (const entry of entries) {
+  //       const width = entry.contentRect.width;
+  //       if (width > 0) setParentWidth(width);
+  //     }
+  //   });
 
-    observer.observe(sectionRef.current);
+  //   observer.observe(sectionRef.current);
 
-    return () => observer.disconnect();
-  }, []);
+  //   return () => observer.disconnect();
+  // }, []);
   useEffect(() => {
     if (extra_info?.child_data_type && selectedCategory?.id) {
       if (extra_info?.child_data_type === "products") {

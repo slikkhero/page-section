@@ -1,6 +1,6 @@
 import { POSITION_ITEM_BACKEND, ScreenSize } from "@/utils";
 import dynamic from "next/dynamic";
-import React, { useRef } from "react";
+import React, { CSSProperties, useRef } from "react";
 
 const Component = dynamic(() => import("./ComponentGetter"), {
   ssr: false,
@@ -13,7 +13,9 @@ function AllComponents({
   callBack,
   children,
   default_components = {},
+  parentWidth
 }: {
+  parentWidth: number;
   initialPageNumber?: number;
   pageName: string;
   subPageName?: string;
@@ -52,6 +54,7 @@ function AllComponents({
             size={size}
             key={key}
             default_components={default_components}
+            parentWidth={parentWidth}
           >
             {children}
           </Component>

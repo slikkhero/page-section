@@ -277,6 +277,7 @@ export interface POSITION_ITEM_FRONTEND extends POSITION_ITEM_BACKEND {
   size: ScreenSize;
   heartOnClick?: (product: any, h: any, setH: any) => void;
   default_components?: Record<string, React.ReactNode>;
+  parentWidth?: number;
 }
 
 //For now this is for Bell Carousel
