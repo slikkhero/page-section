@@ -22,17 +22,6 @@ export default function Home() {
     return () => window.removeEventListener("message", handler)
   }, [])
 
-  useEffect(() => {
-    loadData()
-  }, [])
-  const loadData = async () => {
-    try {
-      const res = await fetch("/mockData.json")
-      const data = await res.json()
-      setData(data)
-    } catch (error) { }
-  }
-
   const handleToggle = () => {
     setIsTransitioning(true)
     setTimeout(() => {
