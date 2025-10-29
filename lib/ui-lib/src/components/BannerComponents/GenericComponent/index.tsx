@@ -64,7 +64,7 @@ export const GenericComponent = ({
     child_component_config = {},
   }: { cta_config?: CtaConfigProps; child_component_config?: CarouselGridConfig } =
     extra_info || {};
-  const sectionRef = useRef<HTMLAnchorElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [childData, setChildData] = useState<any[]>([]);
   const llInfoData = {}
   const [selectedCategory, setSelectedCategory] = useState<{
@@ -393,15 +393,11 @@ export const GenericComponent = ({
     elements_inside?: boolean;
   }) {
     return (
-      <a
+      <div
         className={clsx(
           "flex overflow-hidden"
           // getBackgroundClasses(background_config || undefined)
         )}
-        href={
-          background_config?.web_redirection_url ||
-          sectionHeadingURLFn({ section_filters, is_section_clickable })
-        }
         style={{
           flexDirection: getBackgroundDirection(position || "top"),
         }}
@@ -472,7 +468,7 @@ export const GenericComponent = ({
         >
           {render}
         </div>
-      </a>
+      </div>
     );
     // switch (position) {
     //   case "top":

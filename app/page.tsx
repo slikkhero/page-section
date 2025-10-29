@@ -25,7 +25,6 @@ export default function Home() {
   useEffect(() => {
     loadData()
   }, [])
-
   const loadData = async () => {
     try {
       const res = await fetch("/mockData.json")
@@ -42,7 +41,7 @@ export default function Home() {
         return {
           ...prev,
           size: isMobile ? "lg" : "sm",
-          width: isMobile ? "1280px" : "400px",
+          width: isMobile ? "1280px" : "390px",
         }
       })
       setIsTransitioning(false)
@@ -54,7 +53,7 @@ export default function Home() {
 
   return (
     <div className="text-primaryBlack w-full pb-20 bg-primaryWhite h-full min-h-screen">
-      <div className="px-6 py-8 max-w-7xl mx-auto">
+      <div className="px-6 mx-auto">
         {/* Header with toggle button */}
 
 

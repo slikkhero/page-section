@@ -91,15 +91,15 @@ export function ResponsiveControls({
               </div>
               <input
                 type="range"
-                min="320"
-                max="1400"
+                min="390"
+                max="1920"
                 value={effectiveWidthNum}
                 onChange={(e) => onWidthChange(Number(e.target.value))}
                 className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-foreground range-minimal"
               />
               <div className="flex justify-between text-xs text-foreground/50">
-                <span>320px</span>
-                <span>1400px</span>
+                <span>390px</span>
+                <span>1920px</span>
               </div>
             </div>
 
